@@ -52,7 +52,7 @@ grade_10_results = [result for result in individual_results_grade_9 if result[1]
 # Select the top 10 athletes across all genders based on time
 top_10_results = sorted(individual_results_grade_9 + individual_results_men, key=lambda x: float(x[4].replace(':', '')))[:10]
 
-# This is my function that generates HTML content for the pages
+# Function to generate HTML content for a page
 def generate_html_content(title, file_name, team_data, individual_data, max_individual_results=None):
     nav_bar = """
     <nav>
@@ -87,7 +87,7 @@ def generate_html_content(title, file_name, team_data, individual_data, max_indi
        </section>
     """
 
-    # Added team scores table only for pages that have team data such as mens and womens
+    # Add team scores table only for pages that have team data
     if team_data:
         html_content += """
        <section id="team-scores">
@@ -125,7 +125,7 @@ def generate_html_content(title, file_name, team_data, individual_data, max_indi
            <h2>Top Results</h2>
     """
 
-    # Limited the number of individual results displayed if max_individual_results is set. This was to not overload the user with data.
+    # Limit the number of individual results displayed if max_individual_results is set
     for index, result in enumerate(individual_data[:max_individual_results] if max_individual_results else individual_data):
         if len(result) >= 7:
             athlete_name = result[2]
@@ -163,7 +163,7 @@ def generate_html_content(title, file_name, team_data, individual_data, max_indi
 
 # Generate HTML pages
 generate_html_content("Women's Results", "results.html", team_scores_grade_9[:3], individual_results_grade_9, max_individual_results=20)
-generate_html_content("Men's Results", "mens_results.html", team_scores_men[:3], individual_results_men) # No limit for men's page
+generate_html_content("Men's Results", "mens_results.html", team_scores_men[:3], individual_results_men, max_individual_results=20) # Limit to top 20 for men's page
 generate_html_content("Top 10 Athletes Across All Genders", "top_athletes.html", [], top_10_results)
 generate_html_content("Grade 9 Results", "grade_9_results.html", [], grade_9_results)
 generate_html_content("Grade 10 Results", "grade_10_results.html", [], grade_10_results)
