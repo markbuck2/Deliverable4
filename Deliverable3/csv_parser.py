@@ -130,8 +130,8 @@ def generate_html_content(title, file_name, team_data, individual_data, max_indi
         if len(result) >= 7:
             athlete_name = result[2]
             athlete_link = result[3]
-            athlete_id = result[7]
-            image_path = os.path.join("images", f"{athlete_id}.jpg") if os.path.exists(f"images/{athlete_id}.jpg") else "images/default.jpg"
+            athlete_id = result[7].strip()  # Ensure no extra spaces
+            image_path = os.path.join(image_dir, athlete_id) if os.path.exists(os.path.join(image_dir, athlete_id)) else "images/default.jpg"
         
             html_content += f"""
             <div class="athlete">
@@ -163,7 +163,7 @@ def generate_html_content(title, file_name, team_data, individual_data, max_indi
 
 # Generate HTML pages
 generate_html_content("Women's Results", "results.html", team_scores_grade_9[:3], individual_results_grade_9, max_individual_results=20)
-generate_html_content("Men's Results", "mens_results.html", team_scores_men[:3], individual_results_men, max_individual_results=20) # Limit to top 20 for men's page
+generate_html_content("Men's Results", "mens_results.html", team_scores_men[:3], individual_results_men, max_individual_results=20) # Limiting to top 20 results
 generate_html_content("Top 10 Athletes Across All Genders", "top_athletes.html", [], top_10_results)
 generate_html_content("Grade 9 Results", "grade_9_results.html", [], grade_9_results)
 generate_html_content("Grade 10 Results", "grade_10_results.html", [], grade_10_results)
