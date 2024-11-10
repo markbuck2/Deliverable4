@@ -144,7 +144,6 @@ th.sort-desc::after {
 img {
     display: block;
     margin: 20px auto;
-    max-width: 100%;
     height: auto;
     border-radius: 50%; /* Circle shape for images */
     object-fit: cover;
