@@ -6,8 +6,6 @@
     --text-color: #333;
     --header-background-color: #ffffff;
     --table-border-color: black;
-    --table-row-odd: #f0f0f0;
-    --table-row-even: #fff;
     --link-color: #000000; /* Black links for light mode */
     --link-visited-color: #000000; /* Black for visited links in light mode */
     --link-hover-color: #ff0066; /* Pink color on hover for contrast */
@@ -24,8 +22,6 @@
         --text-color: #f0f0f0;
         --header-background-color: #1b1a1a;
         --table-border-color: #f0f0f0;
-        --table-row-odd: #fffefe;
-        --table-row-even: #ffffff;
         --link-color: #80d0ff; /* Light blue links for dark mode */
         --link-visited-color: #66b3ff;
         --link-hover-color: #ff1493; /* Bright pink for contrast */
